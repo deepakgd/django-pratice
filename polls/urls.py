@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+# adding app_name becuase someother app may have same name like index or details or results or vote
+app_name = 'polls'
+
 urlpatterns = [
     # /polls
     path('', views.index, name='index'),

@@ -5,7 +5,7 @@
                 <b>{{question.question_text}}</b>
                 <div>
                     {% for choice in question.choice_set.all %}
-                        <input type="checkbox" /> {{ choice.choice_text }}  
+                        <input type="checkbox" /> {{choice.id }} {{ choice.choice_text }}  
                     {% endfor %}
                 </div>
             </li>
