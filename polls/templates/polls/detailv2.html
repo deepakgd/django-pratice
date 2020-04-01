@@ -1,0 +1,16 @@
+{% if questions|length > 0 %}
+    <ol>
+        {% for question in questions %}
+            <li>
+                <b>{{question.question_text}}</b>
+                <div>
+                    {% for choice in question.choice_set.all %}
+                        <input type="checkbox" /> {{ choice.choice_text }}  
+                    {% endfor %}
+                </div>
+            </li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <p>No data found</p>
+{% endif %}
