@@ -6,6 +6,7 @@ from django.template import loader
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.urls import reverse
 from .models import Question, Choice
+from django.views import generic
 
 def index(request):
     
@@ -83,3 +84,22 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+# get all/filterred data and return like list data
+class IndexView(generic.ListView):
+    template_name = 'polls/index.html'
+    context_object_name = 'latest_questions'
+
+    def get_queryset(self):
+        # return last five pub question
+        return Question.objects.order_by('-pub_date')[:5]
+
+# get particular data by pk which mentioned in url and return 
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = 'polls/detail.html'
+    
+# get particular data by pk which mentioned in url and return 
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = 'polls/results.html'
