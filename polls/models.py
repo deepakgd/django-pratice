@@ -24,14 +24,15 @@ class Choice(models.Model):
     def __str__(self):
         return self.choice_text
 
-class Todo(models.Model):
-    title = models.CharField(max_length=300)
-    description = models.CharField(max_length=1000)
-    status = models.CharField(max_length=20)
-    date = models.DateTimeField()
-
 class User(models.Model):
     name = models.CharField(max_length=150, null=False)
     age = models.IntegerField(null=True)
     email = models.EmailField(null=False, unique=True)
     mobile = models.CharField(max_length=10)
+
+class Todo(models.Model):
+    title = models.CharField(max_length=300)
+    description = models.CharField(max_length=1000)
+    status = models.CharField(max_length=20)
+    date = models.DateTimeField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
