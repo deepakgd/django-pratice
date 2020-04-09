@@ -9,3 +9,13 @@ def index(request):
 
 def dynamiccontent(request):
     return render(request, 'helloname.html', { "name": 'Deepak' })
+
+def add(request):
+    return render(request, 'add.html')
+
+def result(request):
+    value1 = int(request.GET['value1'])
+    value2 = int(request.GET["value2"])
+    result = value1 + value2
+    print(value1)
+    return render(request, 'result.html', { 'result': result })
