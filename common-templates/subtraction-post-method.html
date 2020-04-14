@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <form action="/subresult" method="POST">
+        {% csrf_token %}
+        <input type="number" name="value1" placeholder="Enter value 1">
+        <input type="number" name="value2" placeholder="Enter value 2">
+        <input type="submit">
+    </form>
+
+{% endblock %}
