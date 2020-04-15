@@ -11,5 +11,7 @@ urlpatterns = [
     path('multiply/', views.multiply, name="multiply"),
     path('multiplyresult', views.multiplyresult, name="multiplyresult"),
     path('subtraction', views.subtraction, name="subtraction"),
-    path('subresult', views.subresult, name='subresult')
+    path('subresult', views.subresult, name='subresult'),
+    path('viewimage', views.viewImageAsset, name="viewimageasset"),
+    path('students', views.listStudents, name="list students")
 ]

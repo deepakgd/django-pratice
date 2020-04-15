@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <h1>Students</h1>
+
+    <table>
+        <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Active</th>
+            <th>Picture</th>
+        </tr>
+        {% for student in students %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.age}}</td>
+                <td>{{student.gender}}</td>
+                <td>{{student.is_active}}</td>
+                <td>
+                    <img src="{% static 'helloworld/img/' %}{{student.image}}" alt="" width="100">
+                </td>
+            </tr>
+        {% endfor %}
+        
+
+    </table>
+
+{% endblock %}
