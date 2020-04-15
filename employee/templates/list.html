@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1>List employee</h1>
+
+    {% for employee in employees %}
+        <table border="1">
+            <tr>
+                <td>Name</td>
+                <td>{{employee.name}}</td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>{{employee.age}}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{employee.gender}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{employee.email}}</td>
+            </tr>
+            <tr>
+                <td>Profile picture</td>
+                <td>
+                    {{employee.image}}
+                    {{employee.image.url}}
+                    <img src="{{employee.image.url}}" alt="" width="100" height="100" />
+                </td>
+            </tr>
+        </table>
+        <hr>
+    {% endfor %}
+{% endblock %}
