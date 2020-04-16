@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+    <h1>User Registration</h1>
+
+    <div>
+        {% for message in messages %}
+            <h3>{{ message }}</h3>
+        {% endfor %}
+
+    </div>
+    <form action="/accounts/register/" method="POST">
+
+        {% csrf_token %}
+
+        <input type="text" name="first_name" placeholder="first_name" /> <br />
+        <input type="text" name="last_name" placeholder="last_name" />  <br />
+        <input type="text" name="username" placeholder="username" /> <br />
+        <input type="email" name="email" placeholder="email" /> <br />
+        <input type="password" name="password1" placeholder="password1" /> <br />
+        <input type="password" name="password2" placeholder="password2" /> <br />
+        <input type="submit">        
+    </form>
+
+{% endblock %}

@@ -22,7 +22,8 @@ urlpatterns = [
     path('', include('helloworld.urls')),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('employee/', include('employee.urls'))
+    path('employee/', include('employee.urls')),
+    path('accounts/', include('accounts.urls'))
 ]
 
 # using settings u can access all variable
