@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1>
+    List todos
+</h1>
+
+<table>
+    <tr>
+        <th>S.no</th>
+        <th>Name</th>
+        <th>Task Title</th>
+        <th>Task description</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for todo in todos %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ todo.user }}</td>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.description }}</td>
+            <td>{{ todo.status }}</td>
+            <td>
+                <a href="{{todo.get_todo_edit_url}}">
+                    Edit
+                </a>
+            </td>
+            <td>
+                <a href="{{todo.get_delete_url}}">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

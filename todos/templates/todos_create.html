@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <!--  form.as_p this will automatically append form with p tag. inside p all input fields exists -->
+    {{ form.as_p }}
+    <input type="submit">
+</form>
+{% endblock %}
