@@ -28,3 +28,6 @@ class Todos(models.Model):
 
     def get_delete_url(self):
         return reverse("todos:deletetodo", kwargs={ "id": self.id })
+
+    def get_todo_edit_class_url(self):
+        return reverse("todos:updatetodo", kwargs={ "pk": self.id })

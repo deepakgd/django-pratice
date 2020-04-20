@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h1>Show todo</h1>
+    <table>
+        <tr>
+            <td><b>Title</b></td>
+            <td>{{todo.title}}</td>
+        </tr>
+        <tr>
+            <td><b>Description</b></td>
+            <td>{{todo.description}}</td>
+        </tr>
+        <tr>
+            <td><b>User name</b></td>
+            <td>{{todo.user}}</td>
+        </tr>
+        <tr>
+            <td><b>Status</b></td>
+            <td>{{todo.status}}</td>
+        </tr>
+    </table>
+
+    <a href="{{todo.get_todo_edit_class_url}}">Edit</a>
+
+
+{% endblock %}

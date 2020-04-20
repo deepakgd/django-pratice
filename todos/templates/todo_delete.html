@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1>Are you sure, Do you want to delete this below item</h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes" />
+</form>
+<table>
+    <tr>
+        <td><b>Title</b></td>
+        <td>{{todo.title}}</td>
+    </tr>
+    <tr>
+        <td><b>Description</b></td>
+        <td>{{todo.description}}</td>
+    </tr>
+    <tr>
+        <td><b>User name</b></td>
+        <td>{{todo.user}}</td>
+    </tr>
+    <tr>
+        <td><b>Status</b></td>
+        <td>{{todo.status}}</td>
+    </tr>
+</table>
+
+
+
+{% endblock %}

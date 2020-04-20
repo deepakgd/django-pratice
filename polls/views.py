@@ -103,3 +103,19 @@ class DetailView(generic.DetailView):
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
+
+
+# check create view in todos app views file
+
+# createview
+# class TodoCreateView(generic.CreateView):
+#     template_name = "todos_create.html"
+#     form_class = TodoForm
+    
+#     def form_valid(self, form):
+#         print(form.cleaned_data)
+#         return super().form_valid(form)
+
+#     def get_success_url(self):
+#         return '/todos'
+
