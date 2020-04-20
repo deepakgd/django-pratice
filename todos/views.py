@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.views import generic
+from django.views import generic, View
 
 from .forms import TodoForm
 from .models import Todos
+
+# Method 1 normal fully standardize function based view
 
 # Create your views here.
 def list(request):
@@ -43,6 +45,8 @@ def delete(request, id):
     todo.delete()
     return redirect("todos:list")
         
+# Method 2 - class based view
+
 # create view
 class TodoCreateView(generic.CreateView):
     template_name = "todos_create.html"
@@ -92,3 +96,62 @@ class TodoDeleteView(generic.DeleteView):
     def get_success_url(self):
         return '/todos/list'
 
+
+# Method 3 Function based view to class based view
+
+# below function is converting to class based view
+# def welcometodo(requst):
+#     return render(request, 'todo_welcome.html', {})
+
+class WelcomeTodoView(View):
+    # you can change this name in urls.py by passing template_name as argument
+    template_name = "todo_welcome.html"
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {})
+
+
+# f2c list view
+class F2CListTodoView(View):
+    template_name = 'todos.html'
+    
+    def get_queryset(self):
+        return Todos.objects.all()
+    
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, { 'todos': self.get_queryset() })
+
+#f2c create view
+class F2CCreateTodoView(View):
+    template_name = "todos_create.html"
+
+    def get(self, request, *args, **kwargs):
+        form = TodoForm()
+        return render(request, self.template_name, { 'form': form })
+
+    def post(self, request, *args, **kwargs):
+        form = TodoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('todos:list')
+        else:
+            return render(request, self.template_name, { 'form': form })
+
+
+#f2c update view
+class F2CUpdateTodoView(View):
+    template_name = "todo_edit.html"
+
+    def get(self, request, id=None, *args, **kwargs):
+        todo = get_object_or_404(Todos, pk=id)
+        form = TodoForm(None, instance=todo)
+        return render(request, self.template_name, { 'form': form })
+
+    def post(self, request, id=None, *args, **kwargs):
+        todo = get_object_or_404(Todos, pk=id)
+        form = TodoForm(request.POST, instance=todo)
+        if form.is_valid():
+            form.save()
+            return redirect(f"/todos/show/{self.kwargs.get('id')}")
+        else:
+            return render(request, self.template_name, { 'form': form })
