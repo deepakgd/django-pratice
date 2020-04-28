@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'employee.apps.EmployeeConfig',
     'accounts.apps.AccountsConfig',
-    'todos.apps.TodosConfig'
+    'todos.apps.TodosConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

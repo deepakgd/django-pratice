@@ -24,7 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('employee/', include('employee.urls')),
     path('accounts/', include('accounts.urls')),
-    path('todos/', include('todos.urls'))
+    path('todos/', include('todos.urls')),
+    # api
+    path('api/todos/', include('todos.api.urls'))
 ]
 
 # using settings u can access all variable
